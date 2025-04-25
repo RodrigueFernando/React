@@ -3,19 +3,24 @@ import Inicio from "./paginas/Inicio/inicio";
 import SobreMim from "./paginas/sobreMim/index";
 import Menu from "./componentes/Menu/index"
 import Rodape from "./componentes/Rodape";
+import PaginaPadrao from "./componentes/PaginaPadrao";
+
 function AppRoutes() {
   return (
     <BrowserRouter>
-       <Menu/>
-
+      { /* Menu fora de todas as rotas, p/ aparecer em todas as páginas */ }
+      <Menu />
       <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/sobremim" element={<SobreMim />} />
+        <Route path="/" element={ <PaginaPadrao /> }>
+
+          <Route path="/" element={<Inicio />} />
+          <Route path="/sobremim" element={<SobreMim />} />
+        </Route>
         <Route path="*" element={<h1>Página não encontrada!</h1>} />
       </Routes>
-      <Rodape/>
+      { /* Rodape fora de todas as rotas, p/ aparecer em todas as páginas */ }
+      <Rodape />
     </BrowserRouter>
-    
-  );
+  )
 }
 export default AppRoutes;
